@@ -13,12 +13,21 @@ import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa.User;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author tonic
  */
+@Path("Stunden")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 class UserResource {
     @EJB
     private UserBean ub;
@@ -26,4 +35,10 @@ class UserResource {
     public List<User> findUser() {
         return (List<User>) this.ub.getCurrentUser();
     }
+    @POST
+    public User saveNewSong(@Valid User user) {
+        return this.ub.update(user);
+    }
+    
+    
 }
