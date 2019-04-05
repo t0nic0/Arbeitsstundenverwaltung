@@ -11,11 +11,8 @@ package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.web;
 
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.CategoryBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.TaskBean;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.TaskStatus;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -31,8 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/app/tasks/list/"})
 public class TaskListServlet extends HttpServlet {
 
-    @EJB
-    private CategoryBean categoryBean;
     
     @EJB
     private UserBean userBean;
@@ -44,40 +39,9 @@ public class TaskListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
+        // Eigetragene Stunden ermitteln
         User user = this.userBean.getCurrentUser();
         List<Task> tasks = this.taskBean.findByUsername(user.getUsername());
-        //request.setAttribute("categories", this.categoryBean.findAllSorted());
-        //request.setAttribute("statuses", TaskStatus.values());
-
-        // Suchparameter aus der URL auslesen
-        /*String searchText = request.getParameter("search_text");
-        String searchCategory = request.getParameter("search_category");
-        String searchStatus = request.getParameter("search_status");*/
-
-        // Anzuzeigende Aufgaben suchen
-       // Category category = null;
-       // TaskStatus status = null;
-
-        /*if (searchCategory != null) {
-            try {
-                category = this.categoryBean.findById(Long.parseLong(searchCategory));
-            } catch (NumberFormatException ex) {
-                category = null;
-            }
-        }
-
-        if (searchStatus != null) {
-            try {
-                status = TaskStatus.valueOf(searchStatus);
-            } catch (IllegalArgumentException ex) {
-                status = null;
-            }
-
-        }
-
-        List<Task> tasks = this.taskBean.search(searchText, category, status);
-        request.setAttribute("tasks", tasks);*/
         request.setAttribute("tasks", tasks);
         
 

@@ -41,35 +41,6 @@
             </c:when>
             <c:otherwise>
                 <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.web.WebUtils"/>
-
-                <%--
-                    <div class="tile ${tile.cssClass}">
-                         <c:choose>
-                             <c:when test="${empty sections}">
-                                <a href="<c:url value="${tile.href}"/>">
-                                    <div class="content">
-                                        <div class="label">
-                                            <label> monatlich </label>
-                                        </div>
-                                    </div>
-                                </a>
-                            </c:when>
-                        <c:otherwise>
-                    </div>    
-                    <div class="tile ${tile.cssClass}">
-                        <a name ="weekly" href="<c:url value="${tile.href}"/>">
-                            <div class="content">
-                                <div class="label">
-                                   <label> wochentlich </label>
-                                </div>
-                            </div>
-                        </a>  
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                --%>        
-
-
                 <c:forEach items="${sections}" var="section">
                     <h2>
                         <c:out value="${section.label}"/>
@@ -120,8 +91,6 @@
                         </div>
                     </c:forEach>
                 </c:forEach>
-
-
             </c:otherwise>
         </c:choose>
     </jsp:attribute>

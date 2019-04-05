@@ -11,13 +11,10 @@ package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb;
 
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.TaskStatus;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
@@ -73,6 +70,5 @@ public class DashboardContent implements DashboardContentProvider {
         tileWeekly.setLabel("Wöchentlich");
         tileWeekly.setAmount(854656);
         section.getTiles().add(tileWeekly);
-
     }
 }

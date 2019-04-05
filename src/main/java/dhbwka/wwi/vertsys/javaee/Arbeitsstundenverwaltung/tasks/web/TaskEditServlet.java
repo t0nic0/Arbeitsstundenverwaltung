@@ -11,12 +11,10 @@ package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.web;
 
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.CategoryBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.TaskStatus;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
@@ -42,9 +40,6 @@ public class TaskEditServlet extends HttpServlet {
     TaskBean taskBean;
 
     @EJB
-    CategoryBean categoryBean;
-
-    @EJB
     UserBean userBean;
 
     @EJB
@@ -54,11 +49,8 @@ public class TaskEditServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
-        request.setAttribute("statuses", TaskStatus.values());
 
-        // Zu bearbeitende Aufgabe einlesen
+        // Zu bearbeitende Stunden einlesen
         HttpSession session = request.getSession();
 
         Task task = this.getRequestedTask(request);
@@ -118,14 +110,6 @@ public class TaskEditServlet extends HttpServlet {
      
 
         Task task = this.getRequestedTask(request);
-
-        /*if (taskCategory != null && !taskCategory.trim().isEmpty()) {
-            try {
-                task.setCategory(this.categoryBean.findById(Long.parseLong(taskCategory)));
-            } catch (NumberFormatException ex) {
-                // Ungültige oder keine ID mitgegeben
-            }
-        }*/
 
         Date dueDate = WebUtils.parseDate(taskDueDate);
         Time dueTime1 = WebUtils.parseTime(taskDueTime1);
