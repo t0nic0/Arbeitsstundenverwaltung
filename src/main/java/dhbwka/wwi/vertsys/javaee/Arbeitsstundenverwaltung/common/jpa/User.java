@@ -9,7 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa;
 
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Stunde;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -52,7 +52,7 @@ public class User implements Serializable {
     private String firstname;
     
     @Column(name = "LASTNAME", length = 64)
-    @Size(min = 2, max = 64, message = "Der Benutzername muss zwischen zwei und 64 Zeichen lang sein.")
+    @Size(min = 2, max = 64, message = "Der Nachname muss zwischen zwei und 64 Zeichen lang sein.")
     @NotNull(message = "Der Nachname darf nicht leer sein.")
     private String lastname;
     
@@ -76,7 +76,7 @@ public class User implements Serializable {
     List<String> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    List<Task> tasks = new ArrayList<>();
+    List<Stunde> tasks = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
@@ -116,11 +116,11 @@ public class User implements Serializable {
         this.username = id;
     }
 
-    public List<Task> getTasks() {
+    public List<Stunde> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    public void setTasks(List<Stunde> tasks) {
         this.tasks = tasks;
     }
     //</editor-fold>

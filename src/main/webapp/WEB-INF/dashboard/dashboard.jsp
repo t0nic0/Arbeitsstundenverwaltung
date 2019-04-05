@@ -24,11 +24,11 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/stunden/list/"/>">Liste</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Arbeitsstunde eintragen</a>
+            <a href="<c:url value="/app/stunden/stunde/new/"/>">Arbeitsstunde eintragen</a>
         </div>
     </jsp:attribute>
 

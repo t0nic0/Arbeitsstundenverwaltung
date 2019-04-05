@@ -26,7 +26,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_edit.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/stunde_edit.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -35,7 +35,7 @@
         </div>
         
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/stunden/list/"/>">Liste</a>
         </div>
     </jsp:attribute>
 
@@ -46,32 +46,32 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                <label for="task_owner">Mitarbeitername:</label>
+                <label for="stunde_owner">Mitarbeitername:</label>
                 <div class="side-by-side">
-                    <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
+                    <input type="text" name="stunde_owner" value="${stunde_form.values["stunde_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="task_due_date">
+                <label for="stunde_due_date">
                     Datum:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">
+                    <input type="text" name="stunde_due_date" value="${stunde_form.values["stunde_due_date"][0]}">
                 </div>
                 
-                <label for="task_due_date">
+                <label for="stunde_due_date">
                     angefangen um:
                 <span class="required">*</span>
                 <div class="side-by-side">
-                    <input type="text" name="task_due_time1" value="${task_form.values["task_due_time1"][0]}">
+                    <input type="text" name="stunde_due_time1" value="${stunde_form.values["stunde_due_time1"][0]}">
                 </div>
                 </label>
                 
-                <label for="task_due_date">
+                <label for="stunde_due_date">
                     aufgehört um:
                 <span class="required">*</span>
                 <div class="side-by-side">
-                    <input type="text" name="task_due_time2" value="${task_form.values["task_due_time2"][0]}">
+                    <input type="text" name="stunde_due_time2" value="${stunde_form.values["stunde_due_time2"][0]}">
                 </div>
                 </label>
            
@@ -90,9 +90,9 @@
             </div>
 
             <%-- Fehlermeldungen --%>
-            <c:if test="${!empty task_form.errors}">
+            <c:if test="${!empty stunde_form.errors}">
                 <ul class="errors">
-                    <c:forEach items="${task_form.errors}" var="error">
+                    <c:forEach items="${stunde_form.errors}" var="error">
                         <li>${error}</li>
                     </c:forEach>
                 </ul>

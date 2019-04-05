@@ -28,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 public class DashboardServlet extends HttpServlet {
 
     // Kacheln für Stunden
-    @EJB(beanName = "tasks")
-    DashboardContentProvider taskContent;
+    @EJB(beanName = "stunden")
+    DashboardContentProvider StundeContent;
     
 
     @Override
@@ -40,7 +40,7 @@ public class DashboardServlet extends HttpServlet {
         List<DashboardSection> sections = new ArrayList<>();
         request.setAttribute("sections", sections);
         
-        taskContent.createDashboardContent(sections);
+        StundeContent.createDashboardContent(sections);
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/dashboard/dashboard.jsp").forward(request, response);

@@ -19,7 +19,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/stunde_list.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Arbeitsstunden eintragen</a>
+            <a href="<c:url value="/app/stunden/stunde/new/"/>">Arbeitsstunden eintragen</a>
         </div>
     </jsp:attribute>
 
@@ -44,19 +44,19 @@
                            
                         </tr>
                     </thead>
-                    <c:forEach items="${tasks}" var="task">
+                    <c:forEach items="${stunden}" var="stunde">
                             <td>
-                                <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
-                                    <c:out value="${task.owner.username}"/>
+                                <a href="<c:url value="/app/stunden/stunde/${stunde.id}/"/>">
+                                    <c:out value="${stunde.owner.username}"/>
                                 </a>
                             <td>
-                                <c:out value="${task.dueDate}"/> 
+                                <c:out value="${stunde.dueDate}"/> 
                             </td>
                             <td>
-                                <c:out value="${task.dueTime1}"/>
+                                <c:out value="${stunde.dueTime1}"/>
                             </td>
                             <td>
-                                <c:out value="${task.dueTime2}"/>
+                                <c:out value="${stunde.dueTime2}"/>
                             </td> 
                           
                             </tr>

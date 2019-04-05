@@ -14,7 +14,7 @@ import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Stunde;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
@@ -25,7 +25,7 @@ import javax.ejb.Stateless;
 /**
  * EJB zur Definition der Dashboard-Kacheln für Aufgaben.
  */
-@Stateless(name = "tasks")
+@Stateless(name = "stunden")
 public class DashboardContent implements DashboardContentProvider {
 
     /**
@@ -37,7 +37,7 @@ public class DashboardContent implements DashboardContentProvider {
      */
     
     @EJB
-    TaskBean taskBean;
+    StundeBean stundeBean;
     
     @EJB
     UserBean userBean;
@@ -51,9 +51,9 @@ public class DashboardContent implements DashboardContentProvider {
         tileMonthly.setLabel("Monatlich");
         LocalDateTime now = LocalDateTime.now();
         User user = this.userBean.getCurrentUser();
-        List<Task> tasks = this.taskBean.findByUsername(user.getUsername());
+        List<Stunde> tasks = this.stundeBean.findByUsername(user.getUsername());
         int summe = 0;
-        for(Task i : tasks){
+        for(Stunde i : tasks){
          Date date = i.getDueDate();
          Time time1 = i.getDueTime1();
          Time time2 = i.getDueTime2();

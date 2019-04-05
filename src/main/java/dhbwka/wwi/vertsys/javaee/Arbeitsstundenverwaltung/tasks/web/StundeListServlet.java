@@ -11,8 +11,8 @@ package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.web;
 
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.TaskBean;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.StundeBean;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Stunde;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -25,15 +25,15 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet für die tabellarische Auflisten der Aufgaben.
  */
-@WebServlet(urlPatterns = {"/app/tasks/list/"})
-public class TaskListServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/app/stunden/list/"})
+public class StundeListServlet extends HttpServlet {
 
     
     @EJB
     private UserBean userBean;
     
     @EJB
-    private TaskBean taskBean;
+    private StundeBean stundeBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,12 +41,12 @@ public class TaskListServlet extends HttpServlet {
 
         // Eigetragene Stunden ermitteln
         User user = this.userBean.getCurrentUser();
-        List<Task> tasks = this.taskBean.findByUsername(user.getUsername());
-        request.setAttribute("tasks", tasks);
+        List<Stunde> stunden = this.stundeBean.findByUsername(user.getUsername());
+        request.setAttribute("stunden", stunden);
         
 
         // Anfrage an die JSP weiterleiten
-        request.getRequestDispatcher("/WEB-INF/tasks/task_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/stunden/stunde_list.jsp").forward(request, response);
     }
     
 }

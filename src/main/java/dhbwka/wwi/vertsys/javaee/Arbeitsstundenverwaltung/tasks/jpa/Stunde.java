@@ -25,17 +25,17 @@ import javax.validation.constraints.NotNull;
  * Eine zu erledigende Aufgabe.
  */
 @Entity
-public class Task implements Serializable {
+public class Stunde implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "task_ids")
-    @TableGenerator(name = "task_ids", initialValue = 0, allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "stunde_ids")
+    @TableGenerator(name = "stunde_ids", initialValue = 0, allocationSize = 50)
     private long id;
 
     @ManyToOne
-    @NotNull(message = "Die Aufgabe muss einem Benutzer geordnet werden.")
+    @NotNull(message = "Die Stunden müssen einem Benutzer geordnet werden.")
     private User owner;
    
     @NotNull(message = "Das Datum darf nicht leer sein.")
@@ -50,10 +50,10 @@ public class Task implements Serializable {
    
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public Task() {
+    public Stunde() {
     }
 
-    public Task(long id, User owner, Date dueDate, Time dueTime1, Time dueTime2) {
+    public Stunde(long id, User owner, Date dueDate, Time dueTime1, Time dueTime2) {
         this.id = id;
         this.owner = owner;
         this.dueDate = dueDate;

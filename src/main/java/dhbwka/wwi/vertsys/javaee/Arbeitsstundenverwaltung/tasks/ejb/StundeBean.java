@@ -10,7 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb;
 
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Stunde;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -19,10 +19,10 @@ import javax.ejb.Stateless;
  */
 @Stateless
 @RolesAllowed("app-user")
-public class TaskBean extends EntityBean<Task, Long> { 
+public class StundeBean extends EntityBean<Stunde, Long> { 
    
-    public TaskBean() {
-        super(Task.class);
+    public StundeBean() {
+        super(Stunde.class);
     }
     
     /**
@@ -30,8 +30,8 @@ public class TaskBean extends EntityBean<Task, Long> {
      * @param username Benutzername
      * @return Alle Aufgaben des Benutzers
      */
-    public List<Task> findByUsername(String username) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime1, t.dueTime2")
+    public List<Stunde> findByUsername(String username) {
+        return em.createQuery("SELECT s FROM Stunde s WHERE s.owner.username = :username ORDER BY s.dueDate, s.dueTime1, s.dueTime2")
                  .setParameter("username", username)
                  .getResultList();
     }
