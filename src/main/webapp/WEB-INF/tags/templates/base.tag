@@ -39,7 +39,7 @@
             <%-- Titelzeile --%>
             <div id="titlebar">
                 <div class="appname">
-                    Aufgabenliste
+                    Arbeitsstunden verwalten
                 </div>
                 <div class="content">
                     ${title}

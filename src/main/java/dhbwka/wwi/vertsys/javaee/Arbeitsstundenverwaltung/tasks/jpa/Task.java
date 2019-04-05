@@ -42,41 +42,32 @@ public class Task implements Serializable {
     @ManyToOne
     @NotNull(message = "Die Aufgabe muss einem Benutzer geordnet werden.")
     private User owner;
-
-    @ManyToOne
-    private Category category;
-
-    @Column(length = 50)
-    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
-    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
-    private String shortText;
-
-    @Lob
-    @NotNull
-    private String longText;
-
+   
     @NotNull(message = "Das Datum darf nicht leer sein.")
     private Date dueDate;
 
     @NotNull(message = "Die Uhrzeit darf nicht leer sein.")
-    private Time dueTime;
+    private Time dueTime1;
+    
+    @NotNull(message = "Die Uhrzeit darf nicht leer sein.")
+    private Time dueTime2;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private TaskStatus status = TaskStatus.OPEN;
+   
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Task() {
     }
 
-    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime) {
+    public Task(long id, User owner, Date dueDate, Time dueTime1, Time dueTime2) {
+        this.id = id;
         this.owner = owner;
-        this.category = category;
-        this.shortText = shortText;
-        this.longText = longText;
         this.dueDate = dueDate;
-        this.dueTime = dueTime;
+        this.dueTime1 = dueTime1;
+        this.dueTime2 = dueTime2;
     }
+    
+
+    
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
@@ -96,30 +87,6 @@ public class Task implements Serializable {
         this.owner = owner;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getShortText() {
-        return shortText;
-    }
-
-    public void setShortText(String shortText) {
-        this.shortText = shortText;
-    }
-
-    public String getLongText() {
-        return longText;
-    }
-
-    public void setLongText(String longText) {
-        this.longText = longText;
-    }
-
     public Date getDueDate() {
         return dueDate;
     }
@@ -128,21 +95,22 @@ public class Task implements Serializable {
         this.dueDate = dueDate;
     }
 
-    public Time getDueTime() {
-        return dueTime;
+    public Time getDueTime1() {
+        return dueTime1;
     }
 
-    public void setDueTime(Time dueTime) {
-        this.dueTime = dueTime;
+    public void setDueTime1(Time dueTime1) {
+        this.dueTime1 = dueTime1;
+    }
+    
+     public Time getDueTime2() {
+        return dueTime2;
+    }
+     public void setDueTime2(Time dueTime2) {
+        this.dueTime2 = dueTime2;
     }
 
-    public TaskStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TaskStatus status) {
-        this.status = status;
-    }
+   
     //</editor-fold>
 
 }

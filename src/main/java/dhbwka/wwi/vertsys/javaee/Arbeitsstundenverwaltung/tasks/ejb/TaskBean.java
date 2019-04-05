@@ -38,7 +38,7 @@ public class TaskBean extends EntityBean<Task, Long> {
      * @return Alle Aufgaben des Benutzers
      */
     public List<Task> findByUsername(String username) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
+        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime1")
                  .setParameter("username", username)
                  .getResultList();
     }
@@ -54,7 +54,7 @@ public class TaskBean extends EntityBean<Task, Long> {
      * @param status Status (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Task> search(String search, Category category, TaskStatus status) {
+    /*public List<Task> search(String search, Category category, TaskStatus status) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
@@ -63,8 +63,8 @@ public class TaskBean extends EntityBean<Task, Long> {
         Root<Task> from = query.from(Task.class);
         query.select(from);
 
-        // ORDER BY dueDate, dueTime
-        query.orderBy(cb.asc(from.get("dueDate")), cb.asc(from.get("dueTime")));
+        // ORDER BY dueDate, dueTime1 
+       query.orderBy(cb.asc(from.get("dueDate")), cb.asc(from.get("dueTime1")), cb.asc(from.get("dueTime1")));
         
         // WHERE t.shortText LIKE :search
         Predicate p = cb.conjunction();
@@ -81,11 +81,13 @@ public class TaskBean extends EntityBean<Task, Long> {
         }
         
         // WHERE t.status = :status
+        
         if (status != null) {
             p = cb.and(p, cb.equal(from.get("status"), status));
             query.where(p);
         }
         
+        
         return em.createQuery(query).getResultList();
-    }
+    }*/
 }

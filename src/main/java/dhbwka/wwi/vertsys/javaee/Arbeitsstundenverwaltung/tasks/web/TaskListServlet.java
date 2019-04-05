@@ -9,6 +9,8 @@
  */
 package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.web;
 
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.CategoryBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Category;
@@ -33,6 +35,9 @@ public class TaskListServlet extends HttpServlet {
     private CategoryBean categoryBean;
     
     @EJB
+    private UserBean userBean;
+    
+    @EJB
     private TaskBean taskBean;
 
     @Override
@@ -40,19 +45,21 @@ public class TaskListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
-        request.setAttribute("statuses", TaskStatus.values());
+        User user = this.userBean.getCurrentUser();
+        List<Task> tasks = this.taskBean.findByUsername(user.getUsername());
+        //request.setAttribute("categories", this.categoryBean.findAllSorted());
+        //request.setAttribute("statuses", TaskStatus.values());
 
         // Suchparameter aus der URL auslesen
-        String searchText = request.getParameter("search_text");
+        /*String searchText = request.getParameter("search_text");
         String searchCategory = request.getParameter("search_category");
-        String searchStatus = request.getParameter("search_status");
+        String searchStatus = request.getParameter("search_status");*/
 
         // Anzuzeigende Aufgaben suchen
-        Category category = null;
-        TaskStatus status = null;
+       // Category category = null;
+       // TaskStatus status = null;
 
-        if (searchCategory != null) {
+        /*if (searchCategory != null) {
             try {
                 category = this.categoryBean.findById(Long.parseLong(searchCategory));
             } catch (NumberFormatException ex) {
@@ -70,9 +77,12 @@ public class TaskListServlet extends HttpServlet {
         }
 
         List<Task> tasks = this.taskBean.search(searchText, category, status);
+        request.setAttribute("tasks", tasks);*/
         request.setAttribute("tasks", tasks);
+        
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/tasks/task_list.jsp").forward(request, response);
     }
+    
 }

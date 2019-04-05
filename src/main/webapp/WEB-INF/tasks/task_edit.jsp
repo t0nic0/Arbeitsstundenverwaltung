@@ -17,10 +17,10 @@
     <jsp:attribute name="title">
         <c:choose>
             <c:when test="${edit}">
-                Aufgabe bearbeiten
+                Arbeitsstunden bearbeiten
             </c:when>
             <c:otherwise>
-                Aufgabe anlegen
+                Arbeitsstunden eintragen
             </c:otherwise>
         </c:choose>
     </jsp:attribute>
@@ -46,62 +46,35 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                <label for="task_owner">Eigentümer:</label>
+                <label for="task_owner">Mitarbeitername:</label>
                 <div class="side-by-side">
                     <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="task_category">Kategorie:</label>
-                <div class="side-by-side">
-                    <select name="task_category">
-                        <option value="">Keine Kategorie</option>
-
-                        <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
-                                <c:out value="${category.name}" />
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-
                 <label for="task_due_date">
-                    Fällig am:
+                    Datum:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
                     <input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">
-                    <input type="text" name="task_due_time" value="${task_form.values["task_due_time"][0]}">
                 </div>
-
-                <label for="task_status">
-                    Status:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side margin">
-                    <select name="task_status">
-                        <c:forEach items="${statuses}" var="status">
-                            <option value="${status}" ${task_form.values["task_status"][0] == status ? 'selected' : ''}>
-                                <c:out value="${status.label}"/>
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-
-                <label for="task_short_text">
-                    Bezeichnung:
-                    <span class="required">*</span>
-                </label>
+                
+                <label for="task_due_date">
+                    angefangen um:
+                <span class="required">*</span>
                 <div class="side-by-side">
-                    <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
+                    <input type="text" name="task_due_time1" value="${task_form.values["task_due_time1"][0]}">
                 </div>
-
-                <label for="task_long_text">
-                    Beschreibung:
                 </label>
+                
+                <label for="task_due_date">
+                    aufgehört um:
+                <span class="required">*</span>
                 <div class="side-by-side">
-                    <textarea name="task_long_text"><c:out value="${task_form.values['task_long_text'][0]}"/></textarea>
+                    <input type="text" name="task_due_time2" value="${task_form.values["task_due_time2"][0]}">
                 </div>
-
+                </label>
+           
                 <%-- Button zum Abschicken --%>
                 <div class="side-by-side">
                     <button class="icon-pencil" type="submit" name="action" value="save">

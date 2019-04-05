@@ -45,6 +45,16 @@ public class User implements Serializable {
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
+ 
+    @Column(name = "FIRTNAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Vorname muss zwischen zwei und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Vorname darf nicht leer sein.")
+    private String firstname;
+    
+    @Column(name = "LASTNAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Benutzername muss zwischen zwei und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Nachname darf nicht leer sein.")
+    private String lastname;
     
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
@@ -72,12 +82,30 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String firstname, String lastname, String password) {
         this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
     }
     //</editor-fold>
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
     public String getUsername() {

@@ -111,25 +111,25 @@ public class TaskEditServlet extends HttpServlet {
         // Formulareingaben prüfen
         List<String> errors = new ArrayList<>();
 
-        String taskCategory = request.getParameter("task_category");
+        
         String taskDueDate = request.getParameter("task_due_date");
-        String taskDueTime = request.getParameter("task_due_time");
-        String taskStatus = request.getParameter("task_status");
-        String taskShortText = request.getParameter("task_short_text");
-        String taskLongText = request.getParameter("task_long_text");
+        String taskDueTime1 = request.getParameter("task_due_time1");
+        String taskDueTime2 = request.getParameter("task_due_time2");
+     
 
         Task task = this.getRequestedTask(request);
 
-        if (taskCategory != null && !taskCategory.trim().isEmpty()) {
+        /*if (taskCategory != null && !taskCategory.trim().isEmpty()) {
             try {
                 task.setCategory(this.categoryBean.findById(Long.parseLong(taskCategory)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
-        }
+        }*/
 
         Date dueDate = WebUtils.parseDate(taskDueDate);
-        Time dueTime = WebUtils.parseTime(taskDueTime);
+        Time dueTime1 = WebUtils.parseTime(taskDueTime1);
+        Time dueTime2 = WebUtils.parseTime(taskDueTime2);
 
         if (dueDate != null) {
             task.setDueDate(dueDate);
@@ -137,21 +137,18 @@ public class TaskEditServlet extends HttpServlet {
             errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
         }
 
-        if (dueTime != null) {
-            task.setDueTime(dueTime);
+        if (dueTime1 != null) {
+            task.setDueTime1(dueTime1);
         } else {
             errors.add("Die Uhrzeit muss dem Format hh:mm:ss entsprechen.");
         }
-
-        try {
-            task.setStatus(TaskStatus.valueOf(taskStatus));
-        } catch (IllegalArgumentException ex) {
-            errors.add("Der ausgewählte Status ist nicht vorhanden.");
+        
+         if (dueTime2 != null) {
+            task.setDueTime2(dueTime2);
+        } else {
+            errors.add("Die Uhrzeit muss dem Format hh:mm:ss entsprechen.");
         }
-
-        task.setShortText(taskShortText);
-        task.setLongText(taskLongText);
-
+        
         this.validationBean.validate(task, errors);
 
         // Datensatz speichern
@@ -208,7 +205,8 @@ public class TaskEditServlet extends HttpServlet {
         Task task = new Task();
         task.setOwner(this.userBean.getCurrentUser());
         task.setDueDate(new Date(System.currentTimeMillis()));
-        task.setDueTime(new Time(System.currentTimeMillis()));
+        task.setDueTime1(new Time(System.currentTimeMillis()));
+        task.setDueTime2(new Time(System.currentTimeMillis()));
 
         // ID aus der URL herausschneiden
         String taskId = request.getPathInfo();
@@ -250,35 +248,21 @@ public class TaskEditServlet extends HttpServlet {
             task.getOwner().getUsername()
         });
 
-        if (task.getCategory() != null) {
-            values.put("task_category", new String[]{
-                "" + task.getCategory().getId()
-            });
-        }
-
+      
         values.put("task_due_date", new String[]{
             WebUtils.formatDate(task.getDueDate())
         });
 
-        values.put("task_due_time", new String[]{
-            WebUtils.formatTime(task.getDueTime())
+        values.put("task_due_time1", new String[]{
+            WebUtils.formatTime(task.getDueTime1())
         });
-
-        values.put("task_status", new String[]{
-            task.getStatus().toString()
-        });
-
-        values.put("task_short_text", new String[]{
-            task.getShortText()
-        });
-
-        values.put("task_long_text", new String[]{
-            task.getLongText()
+        
+         values.put("task_due_time2", new String[]{
+            WebUtils.formatTime(task.getDueTime2())
         });
 
         FormValues formValues = new FormValues();
         formValues.setValues(values);
         return formValues;
     }
-
 }

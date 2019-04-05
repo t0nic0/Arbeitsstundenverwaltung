@@ -34,7 +34,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/app/tasks/categories/"})
 public class CategoryListServlet extends HttpServlet {
 
-    @EJB
+   /* @EJB
     CategoryBean categoryBean;
 
     @EJB
@@ -88,7 +88,7 @@ public class CategoryListServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void createCategory(HttpServletRequest request, HttpServletResponse response)
+    /*private void createCategory(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Formulareingaben prüfen
@@ -123,7 +123,7 @@ public class CategoryListServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void deleteCategories(HttpServletRequest request, HttpServletResponse response)
+    /*private void deleteCategories(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Markierte Kategorie IDs auslesen
@@ -164,6 +164,6 @@ public class CategoryListServlet extends HttpServlet {
 
         // Browser auffordern, die Seite neuzuladen
         response.sendRedirect(request.getRequestURI());
-    }
+    }*/
 
 }

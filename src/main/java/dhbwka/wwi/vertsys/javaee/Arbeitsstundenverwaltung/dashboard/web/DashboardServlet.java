@@ -30,6 +30,15 @@ public class DashboardServlet extends HttpServlet {
     // Kacheln für Aufgaben
     @EJB(beanName = "tasks")
     DashboardContentProvider taskContent;
+    
+    /*
+    @EJB
+    UserBean userBean;
+    
+    @EJB
+    TaskBean taskBean;
+    */
+    
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,5 +53,32 @@ public class DashboardServlet extends HttpServlet {
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/dashboard/dashboard.jsp").forward(request, response);
     }
-
+    
+    /*
+     @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        
+        LocalDateTime now = LocalDateTime.now();
+        User user = this.userBean.getCurrentUser();
+        List<Task> tasks = this.taskBean.findByUsername(user.getUsername());
+        int summe = 0;
+        for(Task i : tasks){
+         Date date = i.getDueDate();
+         Time time1 = i.getDueTime1();
+         Time time2 = i.getDueTime2();
+         long diff = time2.getTime() - time1.getTime();
+         float diffHour = Math.floorDiv(diff, 60*60*1000);
+         if (now.getMonthValue() == date.getMonth() + 1) {
+             summe += diffHour;
+             
+            
+         }
+                 
+        }
+        
+    }
+    */
 }
+
