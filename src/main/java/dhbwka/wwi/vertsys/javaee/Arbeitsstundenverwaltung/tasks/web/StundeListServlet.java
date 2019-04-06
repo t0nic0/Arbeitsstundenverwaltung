@@ -39,7 +39,7 @@ public class StundeListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Eigetragene Stunden ermitteln
+        // Eigetragene Stunden (das Datum wird auf Arabisch angezeigt)ermitteln
         User user = this.userBean.getCurrentUser();
         List<Stunde> stunden = this.stundeBean.findByUsername(user.getUsername());
         request.setAttribute("stunden", stunden);

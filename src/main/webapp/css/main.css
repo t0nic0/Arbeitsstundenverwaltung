@@ -23,9 +23,8 @@ html {
     font-size: 14pt;
 
     background-color: rgb(250, 250, 250);
-    color: rgb(83, 91, 94);
-
-    background-image: url(../img/background.png);
+    color: black;
+    background-image: url(../img/background2.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -74,7 +73,7 @@ header, main {
 }
 
 #titlebar .appname {
-    color: rgb(83, 149, 176);
+    color: rgb(100, 149, 176);
 }
 
 /* Menüzeile */
@@ -84,9 +83,9 @@ header, main {
     padding-bottom: 0.5em;
 }
 
-/* Farben für Links */
+/* Farben für Links  */
 a, a:visited {
-    color: rgb(193, 33, 33);
+    color: rgb(193, 33, 33) ;
     text-decoration: none;
 }
 

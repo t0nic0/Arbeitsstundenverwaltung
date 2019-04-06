@@ -46,29 +46,41 @@ public class DashboardContent implements DashboardContentProvider {
     public void createDashboardContent(List<DashboardSection> sections) {
         DashboardSection section = new DashboardSection();
         sections.add(section);
-        
-        DashboardTile tileMonthly = new DashboardTile();
-        tileMonthly.setLabel("Monatlich");
+    
         LocalDateTime now = LocalDateTime.now();
         User user = this.userBean.getCurrentUser();
         List<Stunde> tasks = this.stundeBean.findByUsername(user.getUsername());
-        int summe = 0;
+        
+        int summeMounthly = 0;
+        int summeYearly = 0;
         for(Stunde i : tasks){
          Date date = i.getDueDate();
          Time time1 = i.getDueTime1();
          Time time2 = i.getDueTime2();
          long diff = time2.getTime() - time1.getTime();
+         int year = date.getYear()+1900;
+         int thisYear = now.getYear() ;
+         int thisMonth = now.getMonthValue();
+         int month= date.getMonth() + 1;
          float diffHour = Math.floorDiv(diff, 60*60*1000);
-         if (now.getMonthValue() == date.getMonth() + 1) {
-             summe += diffHour;
-              }
-         }
-        tileMonthly.setAmount(summe);
-        section.getTiles().add(tileMonthly);
-        
+         if (thisYear == year && thisMonth == month) {
+             summeMounthly += diffHour;
+            }
+         if ( thisYear == year){
+             summeYearly += diffHour;
+            } 
+         
+        }
+         
         DashboardTile tileWeekly = new DashboardTile();
-        tileWeekly.setLabel("Wöchentlich");
-        tileWeekly.setAmount(854656);
+        tileWeekly.setLabel("Jährlich");
+        tileWeekly.setAmount(summeYearly);
         section.getTiles().add(tileWeekly);
+        
+        DashboardTile tileMonthly = new DashboardTile();
+        tileMonthly.setLabel("Monatlich");
+        tileMonthly.setAmount(summeMounthly);
+        section.getTiles().add(tileMonthly);
+       
     }
 }
