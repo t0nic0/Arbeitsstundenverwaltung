@@ -68,19 +68,17 @@ public class DashboardContent implements DashboardContentProvider {
             }
          if ( thisYear == year){
              summeYearly += diffHour;
-            } 
-         
+            }   
         }
          
-        DashboardTile tileWeekly = new DashboardTile();
-        tileWeekly.setLabel("Jährlich");
-        tileWeekly.setAmount(summeYearly);
-        section.getTiles().add(tileWeekly);
+        DashboardTile tileYearly = new DashboardTile();
+        tileYearly.setLabel("Jährlich");
+        tileYearly.setAmount(summeYearly);
+        section.getTiles().add(tileYearly);
         
         DashboardTile tileMonthly = new DashboardTile();
         tileMonthly.setLabel("Monatlich");
         tileMonthly.setAmount(summeMounthly);
-        section.getTiles().add(tileMonthly);
-       
+        section.getTiles().add(tileMonthly);   
     }
 }
