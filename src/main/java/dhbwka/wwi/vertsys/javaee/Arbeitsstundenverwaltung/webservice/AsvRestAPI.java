@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright © 2019 Dennis Schulmeister-Zimolong
  * 
  * E-Mail: dhbw@windows3.de
@@ -24,7 +24,7 @@ public class AsvRestAPI extends Application {
     public Set<Class<?>> getClasses() {
     Set<Class<?>> resources = new HashSet<>();
     // Hier für jede Webservice-Klasse eine Zeile hinzufügen
-    resources.add(UserResource.class);
+    resources.add(StundeResource.class);
 
         return resources;
     }
