@@ -20,6 +20,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb.StundeBean;
+import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Stunde;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PathParam;
 
 /**
  *
@@ -28,17 +32,16 @@ import javax.ws.rs.core.MediaType;
 @Path("Stunden")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-class UserResource {
+public class StundeResource {
+    
     @EJB
-    private UserBean ub;
+    private StundeBean sBean;
+    
      @GET
-    public List<User> findUser() {
-        return (List<User>) this.ub.getCurrentUser();
+     @Path("{stundeName}")
+    public List<Stunde> findStunde(@PathParam("courseName") String stundeName) {
+        Stunde stunde = (Stunde) this.sBean.findByUsername(stundeName);
+        List<Stunde> stunden = this.sBean.findByUsername(stundeName);
+        return stunden ;
     }
-    @POST
-    public User saveNewSong(@Valid User user) {
-        return this.ub.update(user);
-    }
-    
-    
 }

@@ -11,6 +11,8 @@ package dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.ejb;
 
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.common.ejb.EntityBean;
 import dhbwka.wwi.vertsys.javaee.Arbeitsstundenverwaltung.tasks.jpa.Stunde;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;

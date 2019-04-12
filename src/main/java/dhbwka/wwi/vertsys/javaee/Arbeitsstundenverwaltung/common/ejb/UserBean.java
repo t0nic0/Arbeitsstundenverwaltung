@@ -89,6 +89,12 @@ public class UserBean {
         return em.merge(user);
     }
 
+    public User findByUsername(String username) {
+        return (User) this.em.createQuery("SELECT u FROM User u WHERE u.username = :userName")
+                .setParameter("userName", username)
+                .getSingleResult();
+    }
+
     /**
      * Fehler: Der Benutzername ist bereits vergeben
      */
