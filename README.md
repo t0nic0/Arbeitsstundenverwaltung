@@ -39,13 +39,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot1.png">
-                <img src="screenshot1.png" style="display: block; width: 100%;" />
+            <a href="screenshot1.PNG">
+                <img src="screenshot1.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshot2.png">
-                <img src="screenshot2.png" style="display: block; width: 100%;" />
+            <a href="screenshots2.PNG">
+                <img src="screenshots2.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -62,13 +62,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot3.png">
-                <img src="screenshot3.png" style="display: block; width: 100%;" />
+            <a href="screenshot3.PNG ">
+                <img src="screenshot3.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshot4.png">
-                <img src="screenshot4.png" style="display: block; width: 100%;" />
+            <a href="screenshot4.PNG">
+                <img src="screenshot4.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -81,17 +81,16 @@ Screenshots
         </td>
     </tr>
 </table>
-
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot5.png">
-                <img src="screenshot5.png" style="display: block; width: 100%;" />
+            <a href="screenshot5.PNG">
+                <img src="screenshot5.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshot6.png">
-                <img src="screenshot6.png" style="display: block; width: 100%;" />
+            <a href="screenshot6.PNG ">
+                <img src="screenshot6.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
