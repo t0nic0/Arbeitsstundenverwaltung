@@ -77,7 +77,7 @@ Screenshots
             Dashboard
         </td>
         <td>
-            Liste mit Aufgaben
+            Arbeitsstunden eintragen
         </td>
     </tr>
 </table>
@@ -96,10 +96,10 @@ Screenshots
     </tr>
     <tr>
         <td>
-            Aufgabe bearbeiten
+            Liste der Arbeitsstunden 
         </td>
         <td>
-            Kategorien bearbeiten
+           Arbeitsstunden bearbeiten
         </td>
     </tr>
 </table>
