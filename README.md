@@ -39,13 +39,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot1.PNG">
-                <img src="screenshot1.PNG" style="display: block; width: 100%;" />
+            <a href="screenshot2.PNG">
+                <img src="screenshot2.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshots2.PNG">
-                <img src="screenshots2.PNG" style="display: block; width: 100%;" />
+            <a href="screenshot1.PNG">
+                <img src="screenshot1.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
